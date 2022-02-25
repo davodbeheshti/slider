@@ -1,9 +1,21 @@
 // import Swiper from './swiper';
 const boxs = document.querySelectorAll('#box');
-const imgsBox1 = ['img1.png', 'img2.png', 'img3.png', 'img4.png', 'img5.png', 'img6.png']
-const imgsBox2 = ['img1.png', 'img2.png', 'img3.png', 'img4.png', 'img5.png', 'img6.png']
-const imgsBox3 = ['img1.png', 'img2.png', 'img3.png', 'img4.png', 'img5.png', 'img6.png']
-const imgsBox4 = ['img1.png', 'img2.png', 'img3.png', 'img4.png', 'img5.png', 'img6.png']
+const imgsBox1 = {
+    address: '../img/img-box1',
+    images: ['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg']
+}
+const imgsBox2 = {
+    address: '../img/img-box2',
+    images: ['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg']
+}
+const imgsBox3 = {
+    address: '../img/img-box3',
+    images: ['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg']
+}
+const imgsBox4 = {
+    address: '../img/img-box4',
+    images: ['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg', 'img-7.jpg']
+}
 
 boxs.forEach(x => {
     let classElement = x.className;
@@ -38,13 +50,13 @@ function appendSwiper(arrayImgs) {
     const swiperWrapper = document.createElement('div');
     swiperWrapper.classList = 'swiper-wrapper';
     mySwiper.append(swiperWrapper);
-    arrayImgs.map(itemsImg => {
+    arrayImgs.images.map(itemsImg => {
         const swiperSlide = document.createElement('div');
         swiperSlide.classList = 'swiper-slide';
         const img = document.createElement('img');
-        img.src = '../img/pexels-riciardus-307008.jpg'
-            // img.classList = 'swiper-slide'
-            // swiperSlide.textContent = 'slide'
+        img.src = arrayImgs.address + '/' + itemsImg;
+        // img.classList = 'swiper-slide'
+        // swiperSlide.textContent = 'slide'
         swiperSlide.appendChild(img)
         swiperWrapper.append(swiperSlide);
     })
