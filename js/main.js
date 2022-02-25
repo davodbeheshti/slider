@@ -1,5 +1,4 @@
 const boxs = document.querySelectorAll('#box');
-
 const imgsBox1 = {
     address: './img/img-box1',
     images: ['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg']
@@ -89,6 +88,18 @@ const appendSwiper = (arrayImgs) => {
     mySwiper.append(prevBtn)
     mySwiper.append(paging)
     swiperSlider();
+    const btnBack = document.querySelectorAll('.btn-back')
+    btnBack.forEach(btns => {
+        btns.addEventListener('click', () => {
+            mySwiper.innerHTML = null;
+            mySwiper.classList = 'main-background';
+            for (let i = 1; i <= 4; i++) {
+                const box = createTagElement('div', 'box' + i);
+                box.id = "box";
+                mySwiper.append(box)
+            }
+        })
+    })
 }
 
 const swiperSlider = () => {
