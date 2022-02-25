@@ -29,6 +29,57 @@ boxs.forEach(x => {
     })
 })
 
-const appendSwiper = (arrayImgs) => {
+function appendSwiper(arrayImgs) {
     console.log(arrayImgs)
+    const appendSliderElement = document.querySelector('.main-background');
+    appendSliderElement.innerHTML = null;
+    appendSliderElement.classList = 'swiper mySwiper';
+    const mySwiper = document.querySelector('.swiper')
+    const swiperWrapper = document.createElement('div');
+    swiperWrapper.classList = 'swiper-wrapper';
+    mySwiper.append(swiperWrapper);
+    arrayImgs.map(itemsImg => {
+        const swiperSlide = document.createElement('div');
+        swiperSlide.classList = 'swiper-slide';
+        const img = document.createElement('img');
+        img.src = '../img/pexels-riciardus-307008.jpg'
+            // img.classList = 'swiper-slide'
+            // swiperSlide.textContent = 'slide'
+        swiperSlide.appendChild(img)
+        swiperWrapper.append(swiperSlide);
+    })
+    const nextBtn = document.createElement('div');
+    const prevBtn = document.createElement('div');
+    const paging = document.createElement('div');
+    nextBtn.classList = 'swiper-button-next';
+    prevBtn.classList = 'swiper-button-prev';
+    paging.classList = 'swiper-pagination';
+    mySwiper.append(nextBtn)
+    mySwiper.append(prevBtn)
+    mySwiper.append(paging)
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        spaceBetween: 30,
+        slidesPerView: 3,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+    // var swiper = new Swiper(".mySwiper", {
+    //     slidesPerView: "auto",
+    //     spaceBetween: 30,
+    //     pagination: {
+    //         el: ".swiper-pagination",
+    //         clickable: true,
+    //     },
+    //     navigation: {
+    //         nextEl: ".swiper-button-next",
+    //         prevEl: ".swiper-button-prev",
+    //     },
+    // });
 }
