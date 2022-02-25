@@ -1,4 +1,5 @@
 const boxs = document.querySelectorAll('#box');
+
 const imgsBox1 = {
     address: './img/img-box1',
     images: ['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg']
@@ -69,32 +70,30 @@ const setTransition = () => {
     document.querySelector('.box-4').style.transition = 'all 1.1s ease';
 }
 
-function appendSwiper(arrayImgs) {
-    console.log(arrayImgs)
+const appendSwiper = (arrayImgs) => {
     const appendSliderElement = document.querySelector('.main-background');
     appendSliderElement.innerHTML = null;
     appendSliderElement.classList = 'swiper mySwiper';
     const mySwiper = document.querySelector('.swiper')
-    const swiperWrapper = document.createElement('div');
-    swiperWrapper.classList = 'swiper-wrapper';
+    const swiperWrapper = createTagElement('div', 'swiper-wrapper');
     mySwiper.append(swiperWrapper);
     arrayImgs.images.map(itemsImg => {
-        const swiperSlide = document.createElement('div');
-        swiperSlide.classList = 'swiper-slide';
-        const img = document.createElement('img');
+        const swiperSlide = createTagElement('div', 'swiper-slide');
+        const img = createTagElement('img', '');
         img.src = arrayImgs.address + '/' + itemsImg;
         swiperSlide.appendChild(img)
         swiperWrapper.append(swiperSlide);
     })
-    const nextBtn = document.createElement('div');
-    const prevBtn = document.createElement('div');
-    const paging = document.createElement('div');
-    nextBtn.classList = 'swiper-button-next';
-    prevBtn.classList = 'swiper-button-prev';
-    paging.classList = 'swiper-pagination';
+    const nextBtn = createTagElement('div', 'swiper-button-next');
+    const prevBtn = createTagElement('div', 'swiper-button-prev');
+    const paging = createTagElement('div', 'swiper-pagination');
     mySwiper.append(nextBtn)
     mySwiper.append(prevBtn)
     mySwiper.append(paging)
+    swiperSlider();
+}
+
+const swiperSlider = () => {
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: "auto",
         spaceBetween: 30,
@@ -108,4 +107,10 @@ function appendSwiper(arrayImgs) {
             prevEl: ".swiper-button-prev",
         },
     });
+}
+
+const createTagElement = (tagName, classList) => {
+    const el = document.createElement(tagName);
+    el.classList = classList;
+    return el;
 }
