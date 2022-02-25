@@ -1,4 +1,3 @@
-// import Swiper from './swiper';
 const boxs = document.querySelectorAll('#box');
 const imgsBox1 = {
     address: '../img/img-box1',
@@ -55,8 +54,6 @@ function appendSwiper(arrayImgs) {
         swiperSlide.classList = 'swiper-slide';
         const img = document.createElement('img');
         img.src = arrayImgs.address + '/' + itemsImg;
-        // img.classList = 'swiper-slide'
-        // swiperSlide.textContent = 'slide'
         swiperSlide.appendChild(img)
         swiperWrapper.append(swiperSlide);
     })
@@ -82,16 +79,4 @@ function appendSwiper(arrayImgs) {
             prevEl: ".swiper-button-prev",
         },
     });
-    // var swiper = new Swiper(".mySwiper", {
-    //     slidesPerView: "auto",
-    //     spaceBetween: 30,
-    //     pagination: {
-    //         el: ".swiper-pagination",
-    //         clickable: true,
-    //     },
-    //     navigation: {
-    //         nextEl: ".swiper-button-next",
-    //         prevEl: ".swiper-button-prev",
-    //     },
-    // });
 }
