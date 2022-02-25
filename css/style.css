@@ -1,0 +1,38 @@
+*,
+*::after,
+*::before,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.main-background {
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/pexels-jonathan-meyer-612999.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+
+.main-background div {
+  width: 25%;
+  height: 100%;
+  border: 1px solid #4a4a4a;
+  background: #efefef1c;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.main-background div:hover {
+  background: #d5d5d552;
+}
+/*# sourceMappingURL=style.css.map */
