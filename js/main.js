@@ -22,30 +22,24 @@ boxs.forEach(x => {
     x.addEventListener('click', () => {
         switch (classElement) {
             case 'box-1':
-                console.log('box-1')
-                    // document.querySelector('.box-1').style.opacity = '0'
-                    // appendSwiper(imgsBox1)
                 setTransition();
                 setTimeout(() => {
                     appendSwiper(imgsBox1)
                 }, 1000);
                 break;
             case 'box-2':
-                console.log('box-2')
                 setTransition();
                 setTimeout(() => {
                     appendSwiper(imgsBox2)
                 }, 1000);
                 break;
             case 'box-3':
-                console.log('box-3')
                 setTransition();
                 setTimeout(() => {
                     appendSwiper(imgsBox3)
                 }, 1000);
                 break;
             case 'box-4':
-                console.log('box-4')
                 setTransition();
                 setTimeout(() => {
                     appendSwiper(imgsBox4)
