@@ -74,8 +74,12 @@ const appendSwiper = (arrayImgs) => {
     arrayImgs.images.map(itemsImg => {
         const swiperSlide = createTagElement('div', 'swiper-slide');
         const img = createTagElement('img', '');
+        const btnBack = createTagElement('span', 'btn-back')
+        const iconBack = createTagElement('i', 'fa fa-arrow-left');
+        btnBack.appendChild(iconBack);
         img.src = arrayImgs.address + '/' + itemsImg;
-        swiperSlide.appendChild(img)
+        swiperSlide.appendChild(img);
+        swiperSlide.appendChild(btnBack);
         swiperWrapper.append(swiperSlide);
     })
     const nextBtn = createTagElement('div', 'swiper-button-next');

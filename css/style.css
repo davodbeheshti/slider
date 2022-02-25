@@ -27,6 +27,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .swiper-slide img {
@@ -46,6 +47,31 @@ body {
 
 .swiper-slide:nth-child(3n) {
   width: 40%;
+}
+
+span.btn-back {
+  position: absolute;
+  z-index: 345;
+  background: #b3b3b3a6;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  color: white;
+  cursor: pointer;
+  bottom: 12%;
+  right: 10%;
+  transition: all .3s ease;
+}
+
+span.btn-back i {
+  transition: all .3s ease;
+}
+
+span.btn-back:hover i {
+  margin-right: 5px;
 }
 
 .main-background {
