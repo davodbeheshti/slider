@@ -1,4 +1,5 @@
 const boxs = document.querySelectorAll('#box');
+
 const imgsBox1 = {
     address: './img/img-box1',
     images: ['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg', 'img-6.jpg']
@@ -91,12 +92,15 @@ const appendSwiper = (arrayImgs) => {
     const btnBack = document.querySelectorAll('.btn-back')
     btnBack.forEach(btns => {
         btns.addEventListener('click', () => {
-            mySwiper.innerHTML = null;
-            mySwiper.classList = 'main-background';
-            for (let i = 1; i <= 4; i++) {
-                const box = createTagElement('div', 'box' + i);
-                box.id = "box";
-                mySwiper.append(box)
+            if (btns.parentElement.className.includes('swiper-slide-active')) {
+                // click to first img section
+                hidesImgSlider(mySwiper, btns, 'nextElementSibling');
+            } else if (btns.parentElement.className.includes('swiper-slide-next')) {
+                // click to img center section
+                hidesImgCenterSlider(mySwiper, btns);
+            } else {
+                // click to last img section
+                hidesImgSlider(mySwiper, btns, 'previousElementSibling');
             }
         })
     })
@@ -122,4 +126,42 @@ const createTagElement = (tagName, classList) => {
     const el = document.createElement(tagName);
     el.classList = classList;
     return el;
+}
+
+// click btn back in img slider first or last
+const hidesImgSlider = (swiper, btns, preveORnextElement, command) => {
+    btns.parentElement.style.transition = 'all .3s ease';
+    btns.parentElement.style.opacity = 0;
+    btns.parentElement[preveORnextElement].style.transition = 'all .7s ease';
+    btns.parentElement[preveORnextElement].style.opacity = 0;
+    btns.parentElement[preveORnextElement][preveORnextElement].style.transition = 'all 1.1s ease';
+    btns.parentElement[preveORnextElement][preveORnextElement].style.opacity = 0;
+    setTimeout(() => {
+        swiper.innerHTML = null;
+        swiper.classList = 'main-background';
+        for (let i = 1; i <= 4; i++) {
+            const box = createTagElement('div', 'box' + i);
+            box.id = "box";
+            swiper.append(box)
+        }
+    }, 1100);
+}
+
+// click btn back in img slider center
+const hidesImgCenterSlider = (swiper, btns) => {
+    btns.parentElement.style.transition = 'all .3s ease';
+    btns.parentElement.style.opacity = 0;
+    btns.parentElement.nextElementSibling.style.transition = 'all .8s ease';
+    btns.parentElement.nextElementSibling.style.opacity = 0;
+    btns.parentElement.previousElementSibling.style.transition = 'all .8s ease';
+    btns.parentElement.previousElementSibling.style.opacity = 0;
+    setTimeout(() => {
+        swiper.innerHTML = null;
+        swiper.classList = 'main-background';
+        for (let i = 1; i <= 4; i++) {
+            const box = createTagElement('div', 'box' + i);
+            box.id = "box";
+            swiper.append(box)
+        }
+    }, 800);
 }
