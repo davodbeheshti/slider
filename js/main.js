@@ -22,25 +22,25 @@ boxs.forEach(x => {
     x.addEventListener('click', () => {
         switch (classElement) {
             case 'box-1':
-                setTransition();
+                setTransition("#ffffff", "#ffffff", "all .3s ease");
                 setTimeout(() => {
                     appendSwiper(imgsBox1)
                 }, 1000);
                 break;
             case 'box-2':
-                setTransition();
+                setTransition("#ffffff", "#ffffff", "all .6s ease");
                 setTimeout(() => {
                     appendSwiper(imgsBox2)
                 }, 1000);
                 break;
             case 'box-3':
-                setTransition();
+                setTransition("#ffffff", "#ffffff", "all .9s ease");
                 setTimeout(() => {
                     appendSwiper(imgsBox3)
                 }, 1000);
                 break;
             case 'box-4':
-                setTransition();
+                setTransition("#ffffff", "#ffffff", "all 1.1s ease");
                 setTimeout(() => {
                     appendSwiper(imgsBox4)
                 }, 1000);
@@ -49,25 +49,20 @@ boxs.forEach(x => {
     })
 })
 
-const setTransition = () => {
-    document.querySelector('.box-1').style.background = '#ffffff';
-    document.querySelector('.box-1').style.borderColor = '#ffffff';
-    document.querySelector('.box-1').style.transition = 'all .3s ease';
-    document.querySelector('.box-2').style.background = '#ffffff';
-    document.querySelector('.box-2').style.borderColor = '#ffffff';
-    document.querySelector('.box-2').style.transition = 'all .6s ease';
-    document.querySelector('.box-3').style.background = '#ffffff';
-    document.querySelector('.box-3').style.borderColor = '#ffffff';
-    document.querySelector('.box-3').style.transition = 'all .9s ease';
-    document.querySelector('.box-4').style.background = '#ffffff';
-    document.querySelector('.box-4').style.borderColor = '#ffffff';
-    document.querySelector('.box-4').style.transition = 'all 1.1s ease';
+const setTransition = (backgroundColor, borderColor, transition) => {
+    for (let i = 1; i <= 4; i++) {
+        document.querySelector('.box-' + i).style.background = backgroundColor;
+        document.querySelector('.box-' + i).style.borderColor = borderColor;
+        document.querySelector('.box-' + i).style.transition = transition;
+    }
 }
 
 const appendSwiper = (arrayImgs) => {
-    const appendSliderElement = document.querySelector('.main-background');
-    appendSliderElement.innerHTML = null;
-    appendSliderElement.classList = 'swiper mySwiper';
+    let appendSliderElement = document.querySelector('.main-background');
+    appendSliderElement.style.display = 'none';
+    let sectionSlider = document.querySelector('.convert-section-slider');
+    sectionSlider.appendChild(createTagElement('div', 'swiper mySwiper'))
+        // appendSliderElement.classList = 'swiper mySwiper';
     const mySwiper = document.querySelector('.swiper')
     const swiperWrapper = createTagElement('div', 'swiper-wrapper');
     mySwiper.append(swiperWrapper);
@@ -137,13 +132,13 @@ const hidesImgSlider = (swiper, btns, preveORnextElement, command) => {
     btns.parentElement[preveORnextElement][preveORnextElement].style.transition = 'all 1.1s ease';
     btns.parentElement[preveORnextElement][preveORnextElement].style.opacity = 0;
     setTimeout(() => {
-        swiper.innerHTML = null;
-        swiper.classList = 'main-background';
-        for (let i = 1; i <= 4; i++) {
-            const box = createTagElement('div', 'box' + i);
-            box.id = "box";
-            swiper.append(box)
-        }
+        swiper.remove();
+        let appendSliderElement = document.querySelector('.main-background');
+        appendSliderElement.style.display = 'flex';
+        setTransition("", "", "");
+        setTransition("", "", "");
+        setTransition("", "", "");
+        setTransition("", "", "");
     }, 1100);
 }
 
@@ -156,12 +151,12 @@ const hidesImgCenterSlider = (swiper, btns) => {
     btns.parentElement.previousElementSibling.style.transition = 'all .8s ease';
     btns.parentElement.previousElementSibling.style.opacity = 0;
     setTimeout(() => {
-        swiper.innerHTML = null;
-        swiper.classList = 'main-background';
-        for (let i = 1; i <= 4; i++) {
-            const box = createTagElement('div', 'box' + i);
-            box.id = "box";
-            swiper.append(box)
-        }
+        swiper.remove();
+        let appendSliderElement = document.querySelector('.main-background');
+        appendSliderElement.style.display = 'flex';
+        setTransition("", "", "");
+        setTransition("", "", "");
+        setTransition("", "", "");
+        setTransition("", "", "");
     }, 800);
 }
